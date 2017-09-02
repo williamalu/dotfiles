@@ -1,6 +1,7 @@
 # Point to robbyrussel oh-my-zsh installation
 export ZSH=~/.oh-my-zsh
 
+# Point to .zshrc
 export ZSHRC=~/.zshrc
 
 # Visual theme to use for a list of themes, see:
@@ -12,3 +13,6 @@ plugins=(git zsh-autosuggestions)
 
 # Source oh-my-zsh config file
 source $ZSH/oh-my-zsh.sh
+
+# Aliases
+alias tpb='npm run lint && npm test && npm run build:once'
