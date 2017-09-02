@@ -1,3 +1,7 @@
+################################################################################
+# ZSH SPECIFIC
+################################################################################
+
 # Point to robbyrussel oh-my-zsh installation
 export ZSH=~/.oh-my-zsh
 
@@ -13,6 +17,16 @@ plugins=(git zsh-autosuggestions)
 
 # Source oh-my-zsh config file
 source $ZSH/oh-my-zsh.sh
+
+
+################################################################################
+# CUSTOM
+################################################################################
+
+# Setup nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Aliases
 alias mountpublic='mkdir -p ~/public && sudo mount //fsvs01/public ~/public -o user=skelly1,workgroup=olin.edu,uid=skelly1'
