@@ -1,0 +1,14 @@
+# Point to robbyrussel oh-my-zsh installation
+export ZSH=~/.oh-my-zsh
+
+export ZSHRC=~/.zshrc
+
+# Visual theme to use for a list of themes, see:
+# https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="pygmalion"
+
+# Plugins to load
+plugins=(git zsh-autosuggestions)
+
+# Source oh-my-zsh config file
+source $ZSH/oh-my-zsh.sh
