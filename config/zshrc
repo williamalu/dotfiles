@@ -15,4 +15,5 @@ plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
+alias mountpublic='mkdir -p ~/public && sudo mount //fsvs01/public ~/public -o user=skelly1,workgroup=olin.edu,uid=skelly1'
 alias tpb='npm run lint && npm test && npm run build:once'
