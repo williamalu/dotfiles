@@ -54,7 +54,10 @@ set laststatus=2
 hi statusline ctermbg=255 ctermfg=240
 
 " Stop vim from making a .netrwhist file
-:let g:netrw_dirhistmax = 0
+let g:netrw_dirhistmax = 0
+
+" Make the vsp command open the new file on the right of the current file
+set splitright
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
