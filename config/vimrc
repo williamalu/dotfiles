@@ -13,6 +13,7 @@ endif
 call plug#begin('~/.vim/plugged') " vim-plug start
 Plug 'morhetz/gruvbox' " current colorscheme
 Plug 'neomake/neomake' " asyncronous program running
+Plug 'terryma/vim-multiple-cursors' " sublime-like multiple cursors
 call plug#end() " vim-plug end
 
 autocmd BufWritePost,BufEnter * Neomake " run python linter on file write
