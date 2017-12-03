@@ -11,22 +11,24 @@ endif
 
 " Use plugins
 call plug#begin('~/.vim/plugged') " vim-plug start
-Plug 'morhetz/gruvbox' " current colorscheme
-Plug 'neomake/neomake' " asyncronous program running
+Plug 'morhetz/gruvbox' " colorscheme
 Plug 'terryma/vim-multiple-cursors' " sublime-like multiple cursors
+Plug 'jiangmiao/auto-pairs' " quotes, parens, brackets
+Plug 'w0rp/ale' " auto-linting
 call plug#end() " vim-plug end
 
-autocmd BufWritePost,BufEnter * Neomake " run python linter on file write
+" gruvbox
+set termguicolors " get accurate coloring
+set background=dark " choose between dark/light theme
+colorscheme gruvbox " set colorscheme
+
+" ale
+let g:ale_linters = { 'cpp': ['cpplint'], 'javascript': ['eslint'] }
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DEFAULT FILE SETTINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Define the look of vim
-set termguicolors " get accurate coloring
-set background=dark " choose between dark/light theme
-colorscheme gruvbox " set colorscheme
 
 " Turn on line numbers
 set number
@@ -106,15 +108,15 @@ map K k<C-Y>
 " Move to the next/previous empty line
 " -remapped to-
 " Move to the next/previous empty line and center the screen around it
-nmap { {zz
-nmap } }zz
+nnoremap { {zz
+nnoremap } }zz
 
 " Move the cursor to the next matching search term
 " -remapped to-
 " Move the cursor to the next matching search term and center the screen around
 "   it
-nmap n nzz
-nmap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
 
 " No idea
 " -remapped to-
@@ -161,12 +163,12 @@ nmap T gT
 " Move cursor to given line number
 " -remapped to-
 " Move cursor to given line number and center screen
-nmap gg ggzz
+nnoremap gg ggzz
 
 " Move cursor to end of file
 " -remapped to-
 " Move cursor to end of file and move screen so cursor is at the bottom
-nmap G Gzb
+nnoremap G Gzb
 
 " No idea
 " -remapped to-
@@ -179,8 +181,8 @@ nmap <C-L> <C-W><C-L>
 " Move cursor up/down half a screen
 " -remapped to-
 " Move cursor up/down half a screen and center the screen around the cursor
-nmap <C-D> <C-D>zz
-nmap <C-U> <C-U>zz
+nnoremap <C-D> <C-D>zz
+nnoremap <C-U> <C-U>zz
 
 " No idea
 " -remapped to-
