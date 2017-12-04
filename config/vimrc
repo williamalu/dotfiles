@@ -23,7 +23,7 @@ set background=dark " choose between dark/light theme
 colorscheme gruvbox " set colorscheme
 
 " ale
-let g:ale_linters = { 'cpp': ['cpplint'], 'javascript': ['eslint'] }
+let g:ale_linters = { 'cpp': ['cpplint', 'cppcheck'], 'javascript': ['eslint'] }
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,7 +34,7 @@ let g:ale_linters = { 'cpp': ['cpplint'], 'javascript': ['eslint'] }
 set number
 
 " Define a tab as 4 spaces
-setlocal tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " Highlight search terms with specified color options
 set hlsearch

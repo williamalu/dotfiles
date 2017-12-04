@@ -11,6 +11,11 @@ echo "--- Installing cpplint ---"
 sudo pip install cpplint
 echo ""
 
+# C++ linter
+echo "--- Installing cppcheck ---"
+sudo apt-get install cppcheck
+echo ""
+
 # Python linter
 echo "--- Installing flake8 ---"
 sudo pip install flake8
