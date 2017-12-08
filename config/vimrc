@@ -33,7 +33,11 @@ let g:ale_linters = { 'cpp': ['cpplint', 'cppcheck'], 'javascript': ['eslint'] }
 " Turn on line numbers
 set number
 
-" Define a tab as 4 spaces
+" Show lines that wrap to multiple lines, even if they don't fully fit on the
+"   page
+set display+=lastline
+
+" Define a tab as 2 spaces
 setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " Highlight search terms with specified color options
