@@ -274,3 +274,16 @@ function! ResolveGitConflictsAllFiles()
     call ResolveGitConflictsCurrentFile()
   endfor
 endfunction
+
+" Make it a lot easier to write text
+function! WordProcessorMode()
+  if( &spell == 1)
+    setlocal nospell
+    setlocal nolinebreak
+  else
+    setlocal spell spelllang=en_us
+    setlocal wrap
+    setlocal linebreak
+  endif
+endfunction
+com! WP call WordProcessorMode()
