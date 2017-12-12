@@ -15,15 +15,21 @@ Plug 'morhetz/gruvbox' " colorscheme
 Plug 'terryma/vim-multiple-cursors' " sublime-like multiple cursors
 Plug 'jiangmiao/auto-pairs' " quotes, parens, brackets
 Plug 'w0rp/ale' " auto-linting
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy file finder/opener
+Plug 'junegunn/fzf.vim' " fuzzy file finder/opener
 call plug#end() " vim-plug end
 
-" gruvbox
+" morhetz/gruvbox
 set termguicolors " get accurate coloring
 set background=dark " choose between dark/light theme
 colorscheme gruvbox " set colorscheme
 
-" ale
+" w0rp/ale
 let g:ale_linters = { 'cpp': ['cpplint', 'cppcheck'], 'javascript': ['eslint'] }
+
+" junegunn/fzf
+let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ignore gitignored files
+nnoremap <c-f> :FZF<cr> " open with ctrl-f
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
