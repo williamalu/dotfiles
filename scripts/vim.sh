@@ -27,9 +27,10 @@ echo "--- Installing ag ---"
 sudo apt-get install silversearcher-ag
 echo ""
 
-echo "--- Updating vimrc ---"
+echo "--- Replacing vimrc with a symbolic link to this file ---"
 mkdir -p ~/.vim
-cp -v ../config/vimrc ~/.vim/vimrc
+rm -v ~/.vim/vimrc
+ln -v -s ~/.setup/config/vimrc ~/.vim/vimrc
 echo ""
 
 echo "--- Vim setup is complete ---"
