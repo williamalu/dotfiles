@@ -13,7 +13,7 @@ export ZSHRC=~/.zshrc
 ZSH_THEME="pygmalion"
 
 # Plugins to load
-plugins=(git zsh-autosuggestions)
+plugins=(git wd zsh-autosuggestions)
 
 # Source oh-my-zsh config file
 source $ZSH/oh-my-zsh.sh

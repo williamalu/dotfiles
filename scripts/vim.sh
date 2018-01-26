@@ -1,4 +1,6 @@
 echo "--- Installing vim ---"
+sudo add-apt-repository -y ppa:jonathonf/vim  # vim 8.0 repo
+sudo apt-get update
 sudo apt-get -y install vim
 echo ""
 

@@ -20,7 +20,6 @@ Plug 'junegunn/fzf.vim' " fuzzy file finder/opener
 call plug#end() " vim-plug end
 
 " morhetz/gruvbox
-set termguicolors " get accurate coloring
 set background=dark " choose between dark/light theme
 colorscheme gruvbox " set colorscheme
 

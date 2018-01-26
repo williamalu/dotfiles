@@ -5,11 +5,11 @@ echo ""
 
 # For manually mounting CIFS/SMB Windows Filesystems
 echo "--- Installing cifs-utils ---"
-sudo apt-get install cifs-utils
+sudo apt-get -y install cifs-utils
 echo ""
 
 echo "--- Downloading NVM ---"
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zshpick
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zsh
 echo ""
 
 echo "--- Installing NVM ---"
@@ -17,6 +17,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install node
+echo ""
+
+echo "--- Installing Curl ---"
+sudo apt-get -y install curl
 echo ""
 
 echo "--- System reboot may be required for changes to take affect ---"

@@ -1,3 +1,10 @@
+echo "--------------------------"
+echo "--- Running general.sh ---"
+echo "--------------------------"
+echo ""
+./general.sh
+echo ""
+
 echo "----------------------"
 echo "--- Running zsh.sh ---"
 echo "----------------------"
@@ -17,11 +24,4 @@ echo "--- Running git.sh ---"
 echo "----------------------"
 echo ""
 ./git.sh
-echo ""
-
-echo "--------------------------"
-echo "--- Running general.sh ---"
-echo "--------------------------"
-echo ""
-./general.sh
 echo ""
