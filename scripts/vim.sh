@@ -16,17 +16,17 @@ echo ""
 
 # C++ linter for w0rp/ale plugin
 echo "--- Installing cppcheck ---"
-sudo apt-get install cppcheck
+sudo apt-get -y install cppcheck
 echo ""
 
 # Python linter for w0rp/ale plugin
 echo "--- Installing flake8 ---"
-sudo pip install flake8
+sudo pip -y install flake8
 echo ""
 
 # Fuzzy file finder for junegunn/fzf plugin
 echo "--- Installing ag ---"
-sudo apt-get install silversearcher-ag
+sudo apt-get -y install silversearcher-ag
 echo ""
 
 echo "--- Replacing vimrc with a symbolic link to this file ---"
