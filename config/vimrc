@@ -203,6 +203,11 @@ nmap gc :call ResolveGitConflictsCurrentFile()<Enter>
 " Call ResolveGitConflictsAllFiles()
 nmap gC :call ResolveGitConflictsAllFiles()<Enter>
 
+" No idea
+" -remapped to-
+" Go to the next linter error
+nmap <C-l> :ALENext<Enter>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
