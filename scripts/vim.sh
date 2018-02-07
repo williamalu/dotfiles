@@ -20,8 +20,8 @@ sudo apt-get -y install cppcheck
 echo ""
 
 # Python linter for w0rp/ale plugin
-echo "--- Installing flake8 ---"
-sudo pip -y install flake8
+echo "--- Installing pylint ---"
+sudo apt-get install pylint
 echo ""
 
 # Fuzzy file finder for junegunn/fzf plugin

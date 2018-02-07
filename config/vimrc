@@ -24,7 +24,11 @@ set background=dark " choose between dark/light theme
 colorscheme gruvbox " set colorscheme
 
 " w0rp/ale
-let g:ale_linters = { 'cpp': ['cpplint', 'cppcheck'], 'javascript': ['eslint'] }
+let g:ale_linters = {
+  \ 'cpp': ['cpplint', 'cppcheck'],
+  \ 'py': ['pylint'],
+  \ 'javascript': ['eslint'],
+  \ }
 
 " junegunn/fzf
 let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ignore gitignored files
