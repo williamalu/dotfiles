@@ -150,6 +150,18 @@ nnoremap gR viwy:%s/\<<C-R>"\>//g<left><left>
 
 " No idea
 " -remapped to-
+" Replace every local instance of the currently highlighted text with the next
+"   typed word
+vnoremap gr y[{V%::s/\<<C-R>"\>//g<left><left>
+
+" No idea
+" -remapped to-
+" Replace every instance of the currently highlighted text with the next
+"   typed word
+vnoremap gR y:%s/\<<C-R>"\>//g<left><left>
+
+" No idea
+" -remapped to-
 " Switch windows
 nmap gw <C-W>w
 
