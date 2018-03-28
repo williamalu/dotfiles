@@ -222,7 +222,7 @@ nmap gC :call ResolveGitConflictsAllFiles()<Enter>
 " No idea
 " -remapped to-
 " Go to the next linter error
-nmap <C-l> :ALENext<Enter>
+nmap <C-L> :ALENext<Enter>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
