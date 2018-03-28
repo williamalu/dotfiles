@@ -308,6 +308,7 @@ function! WordProcessorMode()
     setlocal nolinebreak
   else
     setlocal spell spelllang=en_us
+    hi SpellBad cterm=underline
     setlocal wrap
     setlocal linebreak
   endif
