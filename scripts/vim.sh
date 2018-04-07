@@ -19,11 +19,6 @@ echo "--- Installing cppcheck ---"
 sudo apt-get -y install cppcheck
 echo ""
 
-# Python linter for w0rp/ale plugin
-echo "--- Installing pylint ---"
-sudo apt-get install pylint
-echo ""
-
 # Fuzzy file finder for junegunn/fzf plugin
 echo "--- Installing ag ---"
 sudo apt-get -y install silversearcher-ag
