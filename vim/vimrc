@@ -1,0 +1,363 @@
+" PLUGINS ----------------------------------------------------------------{{{
+" Install vim-plug if not already installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.vim/vimrc
+endif
+
+" Use plugins
+call plug#begin('~/.vim/plugged') " vim-plug start
+Plug 'morhetz/gruvbox' " colorscheme
+Plug 'terryma/vim-multiple-cursors' " sublime-like multiple cursors
+Plug 'jiangmiao/auto-pairs' " quotes, parens, brackets
+Plug 'w0rp/ale' " auto-linting
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy file finder/opener
+Plug 'junegunn/fzf.vim' " fuzzy file finder/opener
+call plug#end() " vim-plug end
+
+" morhetz/gruvbox
+set background=dark " choose between dark/light theme
+colorscheme gruvbox " set colorscheme
+
+" w0rp/ale
+let g:ale_linters = {
+  \ 'cpp': ['cpplint', 'cppcheck'],
+  \ 'py': ['flake8'],
+  \ 'javascript': ['eslint'],
+  \ }
+
+" junegunn/fzf
+let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ignore gitignored files
+nnoremap <c-f> :FZF<cr> " open with ctrl-f
+" }}}
+
+
+" KEY MAPPINGS -----------------------------------------------------------{{{
+" Define the <leader> key
+let mapleader = ","
+" Define the <localleader> key
+let maplocalleader = "\\"
+
+" Move the cursor up/down real lines
+" -remapped to-
+" Move the cursor up/down perceived lines (eg. if a long line wraps into two
+"   lines, then it will now take two cursor movements to traverse it)
+noremap j gj
+noremap k gk
+
+" Move the cursor up/down
+" -remapped to-
+" Move the cursor up/down and move the screen down/up to keep the cursor in the
+"   same relative position
+noremap J j<C-E>
+noremap K k<C-Y>
+
+" Move to the next/previous empty line
+" -remapped to-
+" Move to the next/previous empty line and center the screen around it
+nnoremap { {zz
+nnoremap } }zz
+
+" Move the cursor to the next matching search term
+" -remapped to-
+" Move the cursor to the next matching search term and center the screen around
+"   it
+nnoremap n nzz
+nnoremap N Nzz
+
+" No idea
+" -remapped to-
+" Clear the highlighting after a search
+nnoremap <leader>h :nohlsearch<CR>
+
+" No idea
+" -remapped to-
+" Replace every local instance of the currently hovered over word with the next
+"   typed word
+nnoremap gr viwy[{V%::s/\<<C-R>"\>//g<left><left>
+
+" No idea
+" -remapped to-
+" Replace every instance of the currently hovered over word with the next
+"   typed word
+nnoremap gR viwy:%s/\<<C-R>"\>//g<left><left>
+
+" No idea
+" -remapped to-
+" Replace every local instance of the currently highlighted text with the next
+"   typed word
+vnoremap gr y[{V%::s/\<<C-R>"\>//g<left><left>
+
+" No idea
+" -remapped to-
+" Replace every instance of the currently highlighted text with the next
+"   typed word
+vnoremap gR y:%s/\<<C-R>"\>//g<left><left>
+
+" In-line character search backwards
+" -remapped to'
+" Change tabs forwards
+nnoremap <leader>t gt
+
+" In-line character search forwards
+" -remapped to'
+" Change tabs backwards
+nnoremap <leader>T gT
+
+" Move cursor to given line number
+" -remapped to-
+" Move cursor to given line number and center screen
+nnoremap gg ggzz
+
+" Move cursor to end of file
+" -remapped to-
+" Move cursor to end of file and move screen so cursor is at the bottom
+nnoremap G Gzb
+
+" No idea
+" -remapped to-
+" Move the cursor to different splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
+
+" NO idea
+" -remapped to-
+" Call ResolveGitConflictsCurrentFile()
+nnoremap gc :call ResolveGitConflictsCurrentFile()<Enter>
+
+" No idea
+" -remapped to-
+" Call ResolveGitConflictsAllFiles()
+nnoremap gC :call ResolveGitConflictsAllFiles()<Enter>
+
+" Move current line down
+" Move current line up
+nnoremap - ddp
+nnoremap _ ddkkp
+
+" Convert the current word to upper case
+nnoremap <c-u> viwUE
+inoremap <c-u> <esc>viwUEa
+
+" Surround current word with "
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+" Surround current word with '
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+" Surround current word with ()
+nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lel
+nnoremap <leader>) viw<esc>a)<esc>bi(<esc>lel
+" Surround current word with []
+nnoremap <leader>[ viw<esc>a]<esc>bi[<esc>lel
+nnoremap <leader>] viw<esc>a]<esc>bi[<esc>lel
+" Surround current word with {}
+nnoremap <leader>{ viw<esc>a}<esc>bi{<esc>lel
+nnoremap <leader>} viw<esc>a}<esc>bi{<esc>lel
+
+" Go to first non-whitespace character in line
+nnoremap H _
+vnoremap H _
+" Go to last non-whitespace character in line
+nnoremap L g_
+vnoremap L g_
+
+" Exit insert mode
+inoremap jk <esc>
+
+" Source vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+" Edit vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Operator-pending in next parenthesis
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+
+" Grep for word under cursor
+"   http://learnvimscriptthehardway.stevelosh.com/chapters/32.html
+nnoremap <leader>g :silent execute "grep! -RI " . shellescape(expand("<cword>")) . " ."<cr>:redraw!<cr>:copen 10<cr>
+" Next grep match
+nnoremap gn :cnext<cr>
+" Previous grep match
+nnoremap gp :cprevious<cr>
+" }}}
+
+
+" TRAINING WHEELS ----------------------------------------------------------{{{
+" Disable using <c-[> to exit insert mode
+" inoremap <c-[> <nop>
+" Disable using <c-[> to exit visual mode
+" vnoremap <c-[> <nop>
+" }}}
+
+
+" MISCELLANEOUS AUTO COMMANDS ----------------------------------------------{{{
+" Give a warning when a file was changed while editing it
+" autocmd FileChangedShell setlocal number!
+" }}}
+
+
+" GENERAL FILE SETTINGS ----------------------------------------------------{{{
+" Turn on line numbers
+set number
+
+" Show lines that wrap to multiple lines, even if they don't fully fit on the
+"   page
+set display+=lastline
+
+" Define a tab as 2 spaces
+setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
+" Highlight search terms with specified color options
+set hlsearch
+noh
+
+" Begin showing search matches as soon as any characters are typed into a
+"   search command
+set incsearch
+
+" Searches are only case sensitive if they contain a capital letter
+set ignorecase
+set smartcase
+
+" Define contents of the statusline
+set statusline=%f     " relative file path
+set statusline+=\ -\ 
+set statusline+=%3l   " line number
+set statusline+=\ 
+set statusline+=%3c   " column number
+set statusline+=%=    " switch to right side
+set statusline+=%y    " file type
+
+" set statusline=%!StatusLine()
+
+" Always show the statusline
+set laststatus=2
+
+" Set the colors of the statusline
+hi statusline ctermbg=255 ctermfg=240
+
+" Stop vim from making a .netrwhist file
+let g:netrw_dirhistmax = 0
+
+" Make the vsp command open the new file on the right of the current file
+set splitright
+" }}}
+
+
+" VIMSCRIPT FILE SETTINGS --------------------------------------------------{{{
+" Define a tab as 2 spaces
+augroup filetype_vim
+  autocmd!
+  " Formatting
+  autocmd FileType vim setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+  " Comment current line
+  autocmd FileType vim nnoremap <buffer> <localleader>c I"<space><esc>
+  " Code folding
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+
+" PYTHON FILE SETTINGS -----------------------------------------------------{{{
+augroup filetype_python
+  autocmd!
+  " Formatting
+  autocmd FileType python setlocal tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+  " Comment current line
+  autocmd FileType python nnoremap <buffer> <localleader>c I#<space><esc>
+augroup END
+" }}}
+
+
+" JAVASCRIPT FILE SETTINGS -------------------------------------------------{{{
+augroup filetype_javascript
+  autocmd!
+  " Formatting
+  autocmd FileType javascript setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+  " Comment current line
+  autocmd FileType javascript nnoremap <buffer> <localleader>c I//<space><esc>
+augroup END
+" }}}
+
+
+" MARKDOWN FILE SETTINGS ---------------------------------------------------{{{
+augroup filetype_markdown
+  autocmd!
+  " Operator-pending: inside heading
+  autocmd FileType markdown onoremap ih :<c-u>execute "normal! ?^#\\+ \r:nohlsearch\rwvg_"<cr>
+  " Operator-pending: around heading
+  autocmd FileType markdown onoremap ah :<c-u>execute "normal! ?^#\\+ \r:nohlsearch\rvg_"<cr>
+augroup END
+" }}}
+
+
+" FUNCTIONS ----------------------------------------------------------------{{{
+function! LinterStatus() abort
+  if !exists(':ALEInfo')
+    return ''
+  endif
+
+  let l:error_symbol = '⨉'
+  let l:style_symbol = '●'
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:ale_linter_status = ''
+
+  if l:counts.total == 0
+    return printf('%%#GitGutterAdd#%s%%*', l:style_symbol)
+  endif
+
+  if l:counts.error
+    let l:ale_linter_status .= printf('%%#GitGutterDelete#%d %s %%*', l:counts.error, l:error_symbol)
+  endif
+  if l:counts.warning
+    let l:ale_linter_status .= printf('%%#GitGutterChange#%d %s %%*', l:counts.warning, l:error_symbol)
+  endif
+  if l:counts.style_error
+    let l:ale_linter_status .= printf('%%#GitGutterDelete#%d %s %%*', l:counts.style_error, l:style_symbol)
+  endif
+  if l:counts.style_warning
+    let l:ale_linter_status .= printf('%%#GitGutterChange#%d %s %%*', l:counts.style_warning, l:style_symbol)
+  endif
+
+  return l:ale_linter_status
+endfunction
+
+
+function! StatusLine() abort
+  let l:line=''
+  let l:line.=LinterStatus()
+  return l:line
+endfunction
+
+
+" Make it a lot easier to write text
+command! WP call WordProcessorMode()
+function! WordProcessorMode()
+  if( &spell == 1)
+    setlocal nospell
+    setlocal nolinebreak
+  else
+    setlocal spell spelllang=en_us
+    hi SpellBad cterm=underline
+    setlocal wrap
+    setlocal linebreak
+  endif
+endfunction
+
+nnoremap <leader>q :call QuickfixToggle()<cr>
+let g:quickfix_is_open = 0
+function! QuickfixToggle()
+  if g:quickfix_is_open
+    cclose
+    let g:quickfix_is_open = 0
+    execute g:quickfix_return_to_window . "wincmd w"
+  else
+    let g:quickfix_return_to_window = winnr()
+    copen
+    let g:quickfix_is_open = 1
+  endif
+endfunction
+" }}}
