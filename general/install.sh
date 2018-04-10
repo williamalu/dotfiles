@@ -8,6 +8,7 @@ echo "--- Installing cifs-utils ---"
 sudo apt-get -y install cifs-utils
 echo ""
 
+# Node version manager
 echo "--- Downloading NVM ---"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zsh
 echo ""

@@ -19,8 +19,7 @@ sudo git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custo
 echo ""
 
 echo "--- Replacing ~/.zshrc with a symbolic link to .setup/config/zshrc ---"
-rm -v ~/.zshrc
-ln -v -s ~/.setup/config/zshrc ~/.zshrc
+ln -vsf ~/.setup/zsh/zshrc ~/.zshrc
 echo ""
 
 

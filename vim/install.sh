@@ -1,3 +1,4 @@
+# Install vim
 echo "--- Installing vim ---"
 sudo add-apt-repository -y ppa:jonathonf/vim  # vim 8.0 repo
 sudo apt-get update
@@ -24,10 +25,11 @@ echo "--- Installing ag ---"
 sudo apt-get -y install silversearcher-ag
 echo ""
 
+# Setup vimrc symlink
 echo "--- Replacing vimrc with a symbolic link to this file ---"
 mkdir -p ~/.vim
 rm -v ~/.vim/vimrc
-ln -v -s ~/.setup/config/vimrc ~/.vim/vimrc
+ln -v -s ~/.setup/vim/vimrc ~/.vim/vimrc
 echo ""
 
 echo "--- Vim setup is complete ---"

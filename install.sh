@@ -1,27 +1,8 @@
-echo "--------------------------"
-echo "--- Running general.sh ---"
-echo "--------------------------"
-echo ""
-./general.sh
-echo ""
-
-echo "----------------------"
-echo "--- Running zsh.sh ---"
-echo "----------------------"
-echo ""
-./zsh.sh
-echo ""
-
-echo "----------------------"
-echo "--- Running vim.sh ---"
-echo "----------------------"
-echo ""
-./vim.sh
-echo ""
-
-echo "----------------------"
-echo "--- Running git.sh ---"
-echo "----------------------"
-echo ""
-./git.sh
-echo ""
+# Run all of the installers
+for installer in $(find -name "install.sh" -not -path "./install.sh"); do
+  echo ""
+  echo "-------------------------------"
+  echo "Running ${installer}..."
+  bash ${installer}
+  echo "-------------------------------"
+done
