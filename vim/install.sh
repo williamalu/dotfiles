@@ -26,10 +26,11 @@ sudo apt-get -y install silversearcher-ag
 echo ""
 
 # Setup vimrc symlink
-echo "--- Replacing vimrc with a symbolic link to this file ---"
+echo "--- Replacing vimrc with a symbolic link to the dotfile vimrc ---"
+script_name=$0
+script_path=$(dirname $(readlink -f ${script_name}))
 mkdir -p ~/.vim
-rm -v ~/.vim/vimrc
-ln -v -s ~/.setup/vim/vimrc ~/.vim/vimrc
+ln -vsf ${script_path}/vimrc ~/.vim/vimrc
 echo ""
 
 echo "--- Vim setup is complete ---"

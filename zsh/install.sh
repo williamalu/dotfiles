@@ -6,10 +6,6 @@ echo "--- Installing Oh My Zsh ---"
 sh -c "$(wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O -)"
 echo ""
 
-echo "--- Updating .zshrc ---"
-cp -v ../config/zshrc ~/.zshrc
-echo ""
-
 echo "--- Setting Zsh to default shell ---"
 chsh -s $(which zsh)
 echo ""
@@ -18,8 +14,11 @@ echo "--- Downloading Zsh Auto-Suggestion Plugin ---"
 sudo git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 echo ""
 
-echo "--- Replacing ~/.zshrc with a symbolic link to .setup/config/zshrc ---"
-ln -vsf ~/.setup/zsh/zshrc ~/.zshrc
+# Setup zshrc symlink
+echo "--- Replacing zshrc with a symbolic link to the dotfile zshrc ---"
+this_filename=${BASH_SOURCE[0]}
+this_dirname="$( cd -P "$( dirname "${this_filename}" )" && pwd )"
+ln -vsf ${this_dirname}/zshrc ~/.zshrc
 echo ""
 
 
