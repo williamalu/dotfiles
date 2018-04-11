@@ -237,7 +237,7 @@ set statusline+=%y    " file type
 set laststatus=2
 
 " Set the colors of the statusline
-hi statusline ctermbg=255 ctermfg=240
+highlight statusline ctermbg=255 ctermfg=240
 
 " Stop vim from making a .netrwhist file
 let g:netrw_dirhistmax = 0
@@ -290,6 +290,29 @@ augroup filetype_markdown
   autocmd FileType markdown onoremap ih :<c-u>execute "normal! ?^#\\+ \r:nohlsearch\rwvg_"<cr>
   " Operator-pending: around heading
   autocmd FileType markdown onoremap ah :<c-u>execute "normal! ?^#\\+ \r:nohlsearch\rvg_"<cr>
+  " Word processing formatting
+  autocmd FileType markdown setlocal wrap linebreak spell spelllang=en_us 
+  autocmd FileType markdown highlight SpellBad cterm=underline
+augroup END
+" }}}
+
+
+" TEXT FILE SETTINGS -------------------------------------------------------{{{
+augroup filetype_text
+  autocmd!
+  " Word processing formatting
+  autocmd FileType text setlocal wrap linebreak spell spelllang=en_us 
+  autocmd FileType text highlight SpellBad cterm=underline
+augroup END
+" }}}
+
+
+" TEX FILE SETTINGS -------------------------------------------------------{{{
+augroup filetype_tex
+  autocmd!
+  " Word processing formatting
+  autocmd FileType tex setlocal wrap linebreak spell spelllang=en_us 
+  autocmd FileType tex highlight SpellBad cterm=underline
 augroup END
 " }}}
 
@@ -341,7 +364,7 @@ function! WordProcessorMode()
     setlocal nolinebreak
   else
     setlocal spell spelllang=en_us
-    hi SpellBad cterm=underline
+    highlight SpellBad cterm=underline
     setlocal wrap
     setlocal linebreak
   endif
