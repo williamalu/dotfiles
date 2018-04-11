@@ -18,11 +18,14 @@ plugins=(git wd zsh-autosuggestions)
 # Source oh-my-zsh config file
 source $ZSH/oh-my-zsh.sh
 
+# Turn off the setting where typing the name of a directory makes you cd to it
+unsetopt AUTO_CD
+
 
 ################################################################################
 # CUSTOM
 ################################################################################
-#
+
 # Setup nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
