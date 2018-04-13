@@ -1,21 +1,4 @@
-" PLUGINS ----------------------------------------------------------------{{{
-" Install vim-plug if not already installed
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/.vim/vimrc
-endif
-
-" Use plugins
-call plug#begin('~/.vim/plugged') " vim-plug start
-Plug 'morhetz/gruvbox' " colorscheme
-Plug 'terryma/vim-multiple-cursors' " sublime-like multiple cursors
-Plug 'jiangmiao/auto-pairs' " quotes, parens, brackets
-Plug 'w0rp/ale' " auto-linting
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy file finder/opener
-Plug 'junegunn/fzf.vim' " fuzzy file finder/opener
-call plug#end() " vim-plug end
-
+" PLUGIN SETTINGS ----------------------------------------------------------------{{{
 " morhetz/gruvbox
 set background=dark " choose between dark/light theme
 colorscheme gruvbox " set colorscheme
@@ -139,8 +122,8 @@ nnoremap - ddp
 nnoremap _ ddkkp
 
 " Convert the current word to upper case
-nnoremap <c-u> viwUE
-inoremap <c-u> <esc>viwUEa
+nnoremap <leader>u viwUE
+inoremap <leader>u <esc>viwUEa
 
 " Surround current word with "
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
@@ -182,20 +165,6 @@ nnoremap <leader>g :silent execute "grep! -RI " . shellescape(expand("<cword>"))
 nnoremap gn :cnext<cr>
 " Previous grep match
 nnoremap gp :cprevious<cr>
-" }}}
-
-
-" TRAINING WHEELS ----------------------------------------------------------{{{
-" Disable using <c-[> to exit insert mode
-" inoremap <c-[> <nop>
-" Disable using <c-[> to exit visual mode
-" vnoremap <c-[> <nop>
-" }}}
-
-
-" MISCELLANEOUS AUTO COMMANDS ----------------------------------------------{{{
-" Give a warning when a file was changed while editing it
-" autocmd FileChangedShell setlocal number!
 " }}}
 
 
@@ -243,6 +212,7 @@ highlight statusline ctermbg=255 ctermfg=240
 let g:netrw_dirhistmax = 0
 
 " Make the vsp command open the new file on the right of the current file
+set splitbelow
 set splitright
 " }}}
 

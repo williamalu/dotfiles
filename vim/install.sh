@@ -29,8 +29,7 @@ echo ""
 echo "--- Replacing vimrc with a symbolic link to the dotfile vimrc ---"
 script_name=$0
 script_path=$(dirname $(readlink -f ${script_name}))
-mkdir -p ~/.vim
-ln -vsf ${script_path}/vimrc ~/.vim/vimrc
+ln -vsf ${script_path} ~/.vim
 echo ""
 
 echo "--- Vim setup is complete ---"
