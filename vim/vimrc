@@ -13,6 +13,8 @@ nnoremap <c-f> :FZF<cr> " open with ctrl-f
 " gruvbox
 set background=dark " choose between dark/light theme
 colorscheme gruvbox " set colorscheme
+
+silent! helptags ALL " load all plugin helptags
 " }}}
 
 
