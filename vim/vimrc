@@ -164,9 +164,9 @@ onoremap il( :<c-u>normal! F)vi(<cr>
 "   http://learnvimscriptthehardway.stevelosh.com/chapters/32.html
 nnoremap <leader>g :silent execute "grep! -RI " . shellescape(expand("<cword>")) . " ."<cr>:redraw!<cr>:copen 10<cr>
 " Next grep match
-nnoremap gn :cnext<cr>
+nnoremap <leader>gn :cnext<cr>
 " Previous grep match
-nnoremap gp :cprevious<cr>
+nnoremap <leader>gp :cprevious<cr>
 
 " Go to next ALE linter error
 nnoremap <leader>l :ALENext<cr>
