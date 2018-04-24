@@ -1,3 +1,3 @@
-# .setup
+# .dotfiles
 
-Scripts used to install/configure my favorite softwares and settings.
+Scripts used to install/configure my favorite software and settings.
