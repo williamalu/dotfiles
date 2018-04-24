@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Run all of the installers
+for install_script in $(find -maxdepth 2 -type f -name "install" \
+	-not -path "./install"); do
+  echo ""
+  echo "-------------------------------"
+  echo "Running $install_script..."
+  echo "-------------------------------"
+  echo ""
+  ./$install_script
+done

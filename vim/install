@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Setup global variables to use throughout script
+start_path=$(pwd)
+script_name=$0
+script_path=$(dirname $(readlink -f $script_name))
+echo $script_path
+
+# Install vim
+echo "--- Installing vim ---"
+vim_8_package="jonathonf/vim"
+if ! grep -q "^deb .*$vim_8_package" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+  echo "Getting vim 8 package"
+  sudo add-apt-repository -y ppa:$vim_8_package
+  sudo apt -qq update
+fi
+sudo apt -yqq install vim
+
+# For installing other things
+echo ""
+echo "--- Installing pip ---"
+sudo apt -yqq install python-pip
+
+# C++ linter for w0rp/ale plugin
+echo ""
+echo "--- Installing cpplint ---"
+sudo --set-home pip install cpplint
+
+# C++ linter for w0rp/ale plugin
+echo ""
+echo "--- Installing cppcheck ---"
+sudo apt -yqq install cppcheck
+
+# Dependencies for fuzzy file finder for junegunn/fzf plugin
+echo ""
+echo "--- Installing ag ---"
+sudo apt -yqq install silversearcher-ag
+
+# Pull contents of all git submodules
+echo ""
+echo "--- Pulling git submodules ---"
+git submodule foreach git pull origin master
+
+# Install junegunn/fzf plugin
+echo ""
+echo "--- Installing plugin: junegunn/fzf ---"
+cd $script_path
+cd $(dirname $(find -type f -path "*/fzf/install"))
+./install --bin
+cd $start_path
+
+
+# Setup vimrc symlink
+echo ""
+echo "--- Replacing ~/.vim with a symbolic link to ~/.dotfiles/vim ---"
+ln --verbose --symbolic --no-dereference --force  $script_path ~/.vim
+# TODO fix this symlink
+
+echo ""
+echo "--- Vim setup is complete ---"

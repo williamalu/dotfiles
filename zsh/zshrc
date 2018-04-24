@@ -35,5 +35,3 @@ export NVM_DIR="$HOME/.nvm"
 alias mountpublic='mkdir -p ~/public && sudo mount //fsvs01/public ~/public -o user=skelly1,workgroup=olin.edu,uid=shane && cd ~/public'
 alias mountscope='mkdir -p ~/scope && sudo mount //fsvs01/SCOPE/SCOPE_Teams_2017-18 ~/scope -o user=skelly1,workgroup=olin.edu,uid=shane && cd ~/scope'
 alias tpb='npm run lint && npm test && npm run build:once'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

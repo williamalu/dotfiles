@@ -165,6 +165,12 @@ nnoremap <leader>g :silent execute "grep! -RI " . shellescape(expand("<cword>"))
 nnoremap gn :cnext<cr>
 " Previous grep match
 nnoremap gp :cprevious<cr>
+
+" Go to next ALE linter error
+nnoremap <leader>l :ALENext<cr>
+
+" Close a buffer without closing the window the buffer was in
+nnoremap <leader>bd :bp \| bd #<cr>
 " }}}
 
 
@@ -179,6 +185,9 @@ set display+=lastline
 " Define a tab as 2 spaces
 setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
+" Set automatic smart indenting
+set autoindent smartindent
+
 " Highlight search terms with specified color options
 set hlsearch
 noh
@@ -188,8 +197,7 @@ noh
 set incsearch
 
 " Searches are only case sensitive if they contain a capital letter
-set ignorecase
-set smartcase
+set ignorecase smartcase
 
 " Define contents of the statusline
 set statusline=%f     " relative file path
@@ -212,8 +220,10 @@ highlight statusline ctermbg=255 ctermfg=240
 let g:netrw_dirhistmax = 0
 
 " Make the vsp command open the new file on the right of the current file
-set splitbelow
-set splitright
+set splitbelow splitright
+
+" Set auto formatting options (h: fo-table)
+set formatoptions=tcroq
 " }}}
 
 
@@ -235,7 +245,7 @@ augroup END
 augroup filetype_python
   autocmd!
   " Formatting
-  autocmd FileType python setlocal tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+  autocmd FileType python setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
   " Comment current line
   autocmd FileType python nnoremap <buffer> <localleader>c I#<space><esc>
 augroup END
@@ -325,20 +335,6 @@ function! StatusLine() abort
   return l:line
 endfunction
 
-
-" Make it a lot easier to write text
-command! WP call WordProcessorMode()
-function! WordProcessorMode()
-  if( &spell == 1)
-    setlocal nospell
-    setlocal nolinebreak
-  else
-    setlocal spell spelllang=en_us
-    highlight SpellBad cterm=underline
-    setlocal wrap
-    setlocal linebreak
-  endif
-endfunction
 
 nnoremap <leader>q :call QuickfixToggle()<cr>
 let g:quickfix_is_open = 0
