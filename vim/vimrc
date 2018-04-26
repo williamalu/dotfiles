@@ -15,6 +15,7 @@ set background=dark " choose between dark/light theme
 colorscheme gruvbox " set colorscheme
 
 silent! helptags ALL " load all plugin helptags
+filetype plugin indent on " run files in ftplugin/ and indent/
 " }}}
 
 
