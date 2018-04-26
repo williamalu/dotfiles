@@ -1,8 +1,22 @@
-echom "Autoloading..."
-
 function! potion#running#PotionCompileAndRunFile()
-  silent !clear
-  execute "!" . g:potion_command . " " . bufname("%")
+  let result = system(g:potion_command . " " . bufname("%"))
+
+  " Open a new split, or move to it if it already exists
+  let bufname = "__Potion_Result__"
+  let bufwinnr = bufwinnr(bufname)
+  if bufwinnr == -1
+    execute "split" . bufname
+  else
+    execute bufwinnr . "wincmd w"
+  endif
+
+  " Clear the split and set it up
+  normal! ggdG
+  setlocal filetype=potionresult
+  setlocal buftype=nofile
+
+  " Insert the bytecode into the split
+  call append(0, split(result, '\v\n'))
 endfunction
 
 function! potion#running#PotionShowBytecode()
@@ -16,7 +30,7 @@ function! potion#running#PotionShowBytecode()
   let bufname = "__Potion_Bytecode__"
   let bufwinnr = bufwinnr(bufname)
   if bufwinnr == -1
-    split __Potion_Bytecode__
+    execute "split" . bufname
   else
     execute bufwinnr . "wincmd w"
   endif
