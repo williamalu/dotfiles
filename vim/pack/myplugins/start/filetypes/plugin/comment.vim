@@ -1,1 +1,2 @@
-nnoremap <localleader>c :call comment#ToggleCommentCurrentLine()<cr>
+nnoremap <localleader>c :call comment#ToggleCommentLine(line("."))<cr>
+vnoremap <localleader>c :call comment#ToggleCommentLine(line("."))<cr>
