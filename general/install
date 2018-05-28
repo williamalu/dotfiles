@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "--- General setup is complete ---"
+echo ""
