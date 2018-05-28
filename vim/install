@@ -38,7 +38,8 @@ sudo apt -yqq install silversearcher-ag
 
 # Pull contents of all git submodules
 echo ""
-echo "--- Pulling git submodules ---"
+echo "--- Initializing and pulling git submodules ---"
+git submodule update --init
 git submodule foreach git pull origin master
 
 # Install junegunn/fzf plugin
