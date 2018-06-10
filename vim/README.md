@@ -23,3 +23,7 @@ A fuzzy file finder for opening new buffers quickly.
 #### [gruvbox](https://github.com/morhetz/gruvbox)
 
 A colorscheme for making vim look pretty.
+
+#### [vim-buftabline](https://github.com/ap/vim-buftabline)
+
+Shows buffers on the tabline (instead of tabs).

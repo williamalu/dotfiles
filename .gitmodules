@@ -7,3 +7,6 @@
 [submodule "vim/pack/bundle/start/ale"]
 	path = vim/pack/bundle/start/ale
 	url = https://github.com/w0rp/ale.git
+[submodule "vim/pack/bundle/start/vim-buftabline"]
+	path = vim/pack/bundle/start/vim-buftabline
+	url = git@github.com:ap/vim-buftabline.git
