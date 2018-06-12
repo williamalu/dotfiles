@@ -24,6 +24,15 @@ A fuzzy file finder for opening new buffers quickly.
 
 A colorscheme for making vim look pretty.
 
-#### [vim-buftabline](https://github.com/ap/vim-buftabline)
+
+### My Plugins
+
+Custom plugins, stored in `vim/pack/myplugins/`.
+
+#### bufline
 
 Shows buffers on the tabline (instead of tabs).
+
+#### filetypes
+
+Handles settings that change based on what type of file is being edited.
