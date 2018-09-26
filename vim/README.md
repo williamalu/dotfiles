@@ -2,9 +2,11 @@
 
 ## Setup
 
-Run my install script, which should take care of all the setup.
+Run the install script, which should take care of all the setup.
 
-`./install`
+```bash
+./install
+```
 
 ## Plugins
 
@@ -23,6 +25,10 @@ A fuzzy file finder for opening new buffers quickly.
 #### [gruvbox](https://github.com/morhetz/gruvbox)
 
 A colorscheme for making vim look pretty.
+
+#### [VimCompletesMe](https://github.com/ajh17/vimcompletesme)
+
+A lightweight tab-completer.
 
 
 ### My Plugins

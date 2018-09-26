@@ -17,6 +17,9 @@ nnoremap <c-f> :FZF<cr> " open with ctrl-f
 " gruvbox
 set background=dark " choose between dark/light theme
 colorscheme gruvbox " set colorscheme
+
+" VimCompletesMe
+set completeopt-=preview " disable the scratch window popping up during tab-completion
 " }}}
 
 
