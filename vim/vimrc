@@ -235,44 +235,6 @@ set formatoptions=tcroq
 
 
 " FUNCTIONS ----------------------------------------------------------------{{{
-function! LinterStatus() abort
-  if !exists(':ALEInfo')
-    return ''
-  endif
-
-  let l:error_symbol = '⨉'
-  let l:style_symbol = '●'
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:ale_linter_status = ''
-
-  if l:counts.total == 0
-    return printf('%%#GitGutterAdd#%s%%*', l:style_symbol)
-  endif
-
-  if l:counts.error
-    let l:ale_linter_status .= printf('%%#GitGutterDelete#%d %s %%*', l:counts.error, l:error_symbol)
-  endif
-  if l:counts.warning
-    let l:ale_linter_status .= printf('%%#GitGutterChange#%d %s %%*', l:counts.warning, l:error_symbol)
-  endif
-  if l:counts.style_error
-    let l:ale_linter_status .= printf('%%#GitGutterDelete#%d %s %%*', l:counts.style_error, l:style_symbol)
-  endif
-  if l:counts.style_warning
-    let l:ale_linter_status .= printf('%%#GitGutterChange#%d %s %%*', l:counts.style_warning, l:style_symbol)
-  endif
-
-  return l:ale_linter_status
-endfunction
-
-
-function! StatusLine() abort
-  let l:line=''
-  let l:line.=LinterStatus()
-  return l:line
-endfunction
-
-
 nnoremap <leader>q :call QuickfixToggle()<cr>
 let g:quickfix_is_open = 0
 function! QuickfixToggle()
